@@ -175,3 +175,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+week1/yellow_tripdata_2024-01.parquet
+week1/terraform-learn-448104-46687160f78d.json
+
+week1/terraform/keys/
+week1/terraform/terraform.tfstate
+week1/terraform/.terraform
+week1/terraform/.terraform.lock.hcl
+week1/output.parquet
+week1/homework/green_tripdata_2019-10.csv
+week1/homework/taxi_zone_lookup.csv
