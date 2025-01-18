@@ -1,0 +1,37 @@
+SELECT COUNT(*) 
+FROM public.green_trips_2019
+WHERE lpep_pickup_datetime >= '2019-10-01'
+  AND lpep_pickup_datetime < '2019-11-01'
+  AND trip_distance <= 1.0;
+
+SELECT COUNT(*) 
+FROM public.green_trips_2019
+WHERE lpep_pickup_datetime >= '2019-10-01'
+  AND lpep_pickup_datetime < '2019-11-01'
+  AND trip_distance > 1.0
+  AND trip_distance <= 3.0;
+
+SELECT COUNT(*) 
+FROM public.green_trips_2019
+WHERE lpep_pickup_datetime >= '2019-10-01'
+  AND lpep_pickup_datetime < '2019-11-01'
+  AND trip_distance > 3.0
+  AND trip_distance <= 7.0;
+
+
+SELECT DATE(lpep_pickup_datetime), MAX(trip_distance)
+FROM public.green_trips_2019
+WHERE DATE(lpep_pickup_datetime) = '2019-10-11'
+  OR DATE(lpep_pickup_datetime) = '2019-10-24'
+  OR DATE(lpep_pickup_datetime) = '2019-10-26'
+  OR DATE(lpep_pickup_datetime) = '2019-10-31'
+GROUP BY DATE(lpep_pickup_datetime)
+
+
+with temp as (SELECT "DOLocationID", "tip_amount", t2."Zone" as pickup_zone, "lpep_pickup_datetime"
+FROM public.green_trips_2019 t1
+JOIN public.taxi_zones t2
+ON t1."PULocationID" = t2."LocationID" 
+WHERE "Zone" = 'East Harlem North'  AND "lpep_pickup_datetime" >= '2019-10-01 00:00:00'
+  AND "lpep_pickup_datetime" < '2019-11-01 00:00:00' order by "tip_amount" desc limit 1)
+select t2."Zone" from temp t join public.taxi_zones t2 on t."DOLocationID"= t2."LocationID"
