@@ -185,3 +185,4 @@ week1/terraform/.terraform.lock.hcl
 week1/output.parquet
 week1/homework/green_tripdata_2019-10.csv
 week1/homework/taxi_zone_lookup.csv
+week2/ny_taxi_postgres_data
