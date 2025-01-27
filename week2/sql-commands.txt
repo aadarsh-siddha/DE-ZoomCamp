@@ -1,0 +1,3 @@
+SELECT COUNT(*) AS counts
+FROM public.yellow_tripdata
+WHERE DATE_PART('year', tpep_pickup_datetime) = 2021 AND DATE_PART('month',tpep_pickup_datetime) = 3 ;
